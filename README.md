@@ -1,87 +1,33 @@
-# Welcome to React Router!
+# Welcome to Case System!
 
-A modern, production-ready template for building full-stack React applications using React Router.
+This is a test case used to improve my ability in React.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+It is build using the React Router Framework Mode.
 
-## Features
+The goal of this project is to create a case system for a fictive company. It will start with basic functonality. After that is working it will start to expand into more advanced functionality. The goal with this project is to have a functional system has been professionally developed.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+The fictive company will be named Veridian Dynamics. 
 
-## Getting Started
 
-### Installation
+# Goals
+This will be the list of goals that should be done. Most goals will be in the form of a user action. Some goals might change during development
 
-Install the dependencies:
+1. Creation of the project and make it run. This includes
+    - create git
+    - Install everything needed to run
+    - remove the standard start website and create the first page
 
-```bash
-npm install
-```
+2. Make the first page navigable
+    - Have components that can be interacted with
+    - Render those components
 
-### Development
+3. User can login
+    - user can write in their username and password. 
+    - Sending login requests. 
+    - create backend that can recive login requests.
+    - return a response and handle that response. 
 
-Start the development server with HMR:
 
-```bash
-npm run dev
-```
+# tecnology
 
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+Im using React Router Framework Mode and all code is written in Typescript. 
