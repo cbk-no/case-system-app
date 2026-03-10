@@ -4,7 +4,7 @@ This is a test case used to improve my ability in React.
 
 It is built using the React Router Framework Mode.
 
-The goal of this project is to create a case system for a fictitious company. It will start with basic functionality. After that, when it is working, it will start to expand into more advanced functionality. The goal with this project is to have a functional system that has been professionally developed.
+The goal of this project is to create a case system for a fictitious company. It will start with basic functionality. After that, when it is working, it will expand to include more advanced functionality. The goal of this project is to have a functional, professionally developed system.
 
 The fictive company will be named Veridian Dynamics. 
 
@@ -13,7 +13,7 @@ The fictive company will be named Veridian Dynamics.
 This will be the list of goals that should be done. Most goals will be in the form of a user action. Some goals might change during development
 
 1. Creation of the project and making it run. This includes
-    - create git
+    - Create git
     - Install everything needed to run
     - Remove the standard start website and create the first page
 
@@ -25,7 +25,7 @@ This will be the list of goals that should be done. Most goals will be in the fo
     - The user can write in their username and password. 
     - Sending login requests. 
     - Create a backend that can receive login requests.
-    - return a response and handle that response. 
+    - Return a response and handle that response. 
 
 
 # technology
