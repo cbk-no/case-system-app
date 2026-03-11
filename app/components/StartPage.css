@@ -1,0 +1,47 @@
+.start-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+.sub-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button {
+  display: block;
+    margin:0 auto;
+    margin-top: 10%;
+  padding: 12px 50px;
+  font-size: 20px;
+  font-weight: 600;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.login-button:active {
+  background-color: #004085;
+}
+
+.login-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
