@@ -29,6 +29,7 @@ This will be the list of goals that should be done. Most goals will be in the fo
 
 
 # technology
-
-I'm using React Router Framework Mode, and all code is written in Typescript. 
+ - React Router
+ - Typescript
+ - Auth0
 
