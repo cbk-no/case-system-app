@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import Navbar from "./components/navbar/navbar";
 
 import type { Route } from "./+types/root";
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -34,27 +35,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <Auth0Provider
+          domain={import.meta.env.VITE_AUTH0_DOMAIN}
+          clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+          authorizationParams={{
+            redirect_uri: import.meta.env.VITE_AUTH0_CALLBACK_URL,
+          }}
+          cacheLocation="localstorage"
+        >
+          <Navbar />
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </Auth0Provider>
       </body>
     </html>
   );
 }
 
 export default function App() {
-  return (
-    <Auth0Provider
-    
-      domain={import.meta.env.VITE_AUTH0_DOMAIN}
-      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
-      authorizationParams={{
-        redirect_uri: import.meta.env.VITE_AUTH0_CALLBACK_URL,
-      }}
-    >
-      <Outlet />
-    </Auth0Provider>
-  );
+  return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

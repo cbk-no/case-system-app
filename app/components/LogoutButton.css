@@ -13,15 +13,32 @@
   transition: background-color 0.3s ease;
 }
 
-.login-button:hover {
+.logout-button:hover {
   background-color: #0056b3;
 }
 
-.login-button:active {
+.logout-button:active {
   background-color: #004085;
 }
 
-.login-button:disabled {
+.logout-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.logout-button-navbar {
+
+}
+
+.logout-button-navbar:hover {
+  background-color: #0056b3;
+  
+}
+.logout-button-navbar:active {
+  background-color: #004085;
+}
+
+.logout-button-navbar:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
 }

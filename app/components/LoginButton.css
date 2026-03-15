@@ -12,7 +12,13 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+.login-button-navbar {
 
+}
+
+.login-button-navbar:hover {
+  background-color: #0056b3;
+}
 .login-button:hover {
   background-color: #0056b3;
 }
