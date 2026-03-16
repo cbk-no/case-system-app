@@ -27,6 +27,22 @@ This will be the list of goals that should be done. Most goals will be in the fo
     - Create a backend that can receive login requests.
     - Return a response and handle that response. 
 
+4. Create case handling
+    - user should see all cases
+    - user should be able to create new case
+    - user should be able to delete case
+    - cases should be saved in a db
+
+5. interaction between users
+    - cases should be able to andre interaction between users. 
+    - changes should be saved and logged
+    - notification when cases are changed
+6. Different level of users
+    - admin mode that can do anything
+    - boss mode that can do changes to workers cases
+    - worker mode that can create cases
+    - user mode that can see cases that is related to them 
+
 
 # technology
  - React Router
