@@ -1,12 +1,12 @@
 import React from "react";
-import "./navbar.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import LogoutButton from "../LogoutButton";
 import { NavLink } from "react-router";
-import LoginButton from "../LoginButton";
+import LogoutButton from "../loginComponents/LogoutButton";
+import LoginButton from "../loginComponents/LoginButton";
+import "./navbar.css";
 
 
-const Navbar: React.FC = () => {
+const NavBar: React.FC = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
     if (isLoading) {
@@ -57,4 +57,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

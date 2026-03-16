@@ -6,7 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import Navbar from "./components/navbar/navbar";
+import NavBar from "./components/navbar/NavBar";
 
 import type { Route } from "./+types/root";
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -41,9 +41,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
           authorizationParams={{
             redirect_uri: import.meta.env.VITE_AUTH0_CALLBACK_URL,
           }}
-          cacheLocation="localstorage"
+          cacheLocation={import.meta.env.VITE_AUTH0_STORAGE}
         >
-          <Navbar />
+          <NavBar />
           {children}
           <ScrollRestoration />
           <Scripts />

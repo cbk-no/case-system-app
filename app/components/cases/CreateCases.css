@@ -1,0 +1,102 @@
+/* Container for the create case form */
+.create-case-container {
+	max-width: 500px;
+	margin: 40px auto;
+	padding: 32px 24px;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.create-case-title {
+	font-size: 2rem;
+	font-weight: 600;
+	margin-bottom: 8px;
+	color: #222;
+	text-align: center;
+}
+
+.create-case-form {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.form-label {
+	font-size: 1rem;
+	font-weight: 500;
+	color: #333;
+}
+
+.form-input, .form-textarea, .form-select {
+	padding: 10px 12px;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	font-size: 1rem;
+	background: #fafbfc;
+	transition: border 0.2s;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+	border-color: #2563eb;
+	outline: none;
+}
+
+.form-textarea {
+	min-height: 80px;
+	resize: vertical;
+}
+
+.form-error {
+	color: #dc2626;
+	font-size: 0.95rem;
+	margin-top: 2px;
+}
+
+.form-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	margin-top: 12px;
+}
+
+.submit-btn {
+	background: #2563eb;
+	color: #fff;
+	padding: 10px 22px;
+	border: none;
+	border-radius: 6px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.submit-btn:hover {
+	background: #1d4ed8;
+}
+
+.cancel-btn {
+	background: #f3f4f6;
+	color: #374151;
+	padding: 10px 22px;
+	border: none;
+	border-radius: 6px;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+	background: #e5e7eb;
+}

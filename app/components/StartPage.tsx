@@ -1,9 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
+import LoginButton from "./loginComponents/LoginButton";
+import LogoutButton from "./loginComponents/LogoutButton";
 import "./StartPage.css";
 
-export function StartPage() {
+const StartPage: React.FC = () => {
   const { isAuthenticated, isLoading, error } = useAuth0();
 
   if (isLoading) {
@@ -40,3 +40,5 @@ export function StartPage() {
     </>
   );
 }
+
+export default StartPage;
