@@ -1,4 +1,4 @@
-import StartPage from "~/components/StartPage";
+import StartPage from "~/routes/StartPage";
 
 export default function Callback() {
   return <StartPage />;

@@ -6,7 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import NavBar from "./components/navbar/NavBar";
+import NavBar from "../features/navbar/NavBar";
 
 import type { Route } from "./+types/root";
 import { Auth0Provider } from "@auth0/auth0-react";

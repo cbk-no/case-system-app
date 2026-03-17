@@ -1,8 +1,8 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router";
-import LogoutButton from "../loginComponents/LogoutButton";
-import LoginButton from "../loginComponents/LoginButton";
+import LogoutButton from "../../components/loginComponents/LogoutButton";
+import LoginButton from "../../components/loginComponents/LoginButton";
 import "./navbar.css";
 
 

@@ -1,6 +1,6 @@
 import type { CaseObject } from "./CasesObjects";
 
-  const sampleCases: CaseObject[] = [
+  const ExampleCases: CaseObject[] = [
     {
       id: '1',
       title: 'Sample Case 1',
@@ -32,4 +32,4 @@ import type { CaseObject } from "./CasesObjects";
     }
   ];
 
-export default sampleCases;
+export default ExampleCases;
