@@ -11,3 +11,12 @@
   align-items: top;
   justify-content: top;
 }
+.cases-create-link {
+  margin-top: 20px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border: 2px solid #eee;
+  color: #000000;
+  text-decoration: none;
+  background-color: rgb(238, 236, 236);
+}

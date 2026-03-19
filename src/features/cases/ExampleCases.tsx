@@ -1,4 +1,4 @@
-import type { CaseObject } from "./CasesObjects";
+import type { CaseObject } from "./CasesObject";
 
   const ExampleCases: CaseObject[] = [
     {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './createCases.css';
+import './createCase.css';
 
 interface CaseFormData {
   title: string;

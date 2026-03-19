@@ -8,6 +8,8 @@ export default [
   route("about", "../features/about/About.tsx"),
   route("contact", "../features/contact/Contact.tsx"),
   route("cases", "../features/cases/cases.tsx"),
+  //route("cases/:id", "../features/cases/CaseDetails.tsx"),
+  route("cases/create", "../features/cases/CreateCase.tsx"),
   
   //route("login", "components/LogInPage.tsx"),
 ] satisfies RouteConfig;
