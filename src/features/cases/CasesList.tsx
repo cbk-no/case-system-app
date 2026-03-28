@@ -1,10 +1,16 @@
 import { Link } from "react-router";
 import "./CasesList.css";
-import type { CasesObjectsProps } from "./CasesObject";
+import type { CasesProps } from "../../types/case";
+import { useCases } from "src/hooks/useCases";
+import type {FC} from "react";
 
 
 
-const CasesList: React.FC<CasesObjectsProps> = ({ cases }) =>{
+const CasesList: FC = () =>{
+  const { data, isLoading, error } = useCases();
+  
+  if (isLoading) return <p>Laster...</p>;
+  if (error) return <p>Kunne ikke hente saker.</p>;
   
   return (
     <div className="case-objects-container">
@@ -15,7 +21,7 @@ const CasesList: React.FC<CasesObjectsProps> = ({ cases }) =>{
           <span>Status</span>
           <span>Priority</span>
         </li>
-        {cases.map((caseItem) => (
+        {data?.map((caseItem) => (
           <li key={caseItem.id}>
             <Link to={`/cases/${caseItem.id}`} className="case-list row">
               <span className="col">{caseItem.title}</span>

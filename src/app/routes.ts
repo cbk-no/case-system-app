@@ -7,7 +7,7 @@ export default [
   route("profile", "../features/profile/Profile.tsx"),
   route("about", "../features/about/About.tsx"),
   route("contact", "../features/contact/Contact.tsx"),
-  route("cases", "../features/cases/cases.tsx"),
+  route("cases", "../features/cases/Cases.tsx"),
   //route("cases/:id", "../features/cases/CaseDetails.tsx"),
   route("cases/create", "../features/cases/CreateCase.tsx"),
   

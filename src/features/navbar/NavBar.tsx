@@ -1,12 +1,12 @@
-import React from "react";
+import type { FC } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router";
 import LogoutButton from "../../components/loginComponents/LogoutButton";
 import LoginButton from "../../components/loginComponents/LoginButton";
-import "./navbar.css";
+import "./NavBar.css";
 
 
-const NavBar: React.FC = () => {
+const NavBar: FC = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
     if (isLoading) {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './createCase.css';
+import { useState, type FC, type ChangeEvent, type FormEvent } from 'react';
+import './CreateCase.css';
 
 interface CaseFormData {
   title: string;
@@ -7,7 +7,7 @@ interface CaseFormData {
   priority: string;
 }
 
-const CreateCases: React.FC = () => {
+const CreateCases: FC = () => {
   const [form, setForm] = useState<CaseFormData>({
     title: '',
     description: '',
@@ -15,12 +15,12 @@ const CreateCases: React.FC = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // Here you would send form data to your backend or API
     setSubmitted(true);
