@@ -11,3 +11,11 @@ export interface Task {
   status: TaskStatus;
   caseId: string;          // Guid
 }
+
+
+export interface CreateTaskRequest {
+  description: string;
+  caseId: string;
+  assignedUserId?: string | null;
+  status?: TaskStatus;
+}

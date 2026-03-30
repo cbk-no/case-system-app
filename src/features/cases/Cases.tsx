@@ -1,4 +1,3 @@
-//import CreateCases from "./CreateCases";
 import { Link } from "react-router";
 import "./Cases.css";
 import CasesList from "./CasesList";
@@ -9,7 +8,9 @@ const Cases: React.FC = () => {
     <div className="cases-screen">
       <h1 className="cases-title">Cases</h1>
       <p>Total Cases: {ExampleCases.length}</p>
+
       <CasesList />
+
       <Link className="cases-create-link" to={`/cases/create`}>
         Create Case
       </Link>

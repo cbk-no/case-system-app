@@ -1,21 +1,21 @@
-import type { Task } from "src/types/task";
+import type { CreateTaskRequest, Task } from "src/types/task";
 
-const BASE = import.meta.env.VITE_API_BASE_URL + '/Tasks';
+const BASE = import.meta.env.VITE_API_BASE_URL;
 
 export async function getTasks(): Promise<Task[]> {
-  const res = await fetch(BASE);
+  const res = await fetch(`${BASE}/Tasks`);
   if (!res.ok) throw new Error('Failed to fetch tasks');
   return res.json();
 }
 
 export async function getTask(id: string): Promise<Task> {
-  const res = await fetch(`${BASE}/${id}`);
+  const res = await fetch(`${BASE}/Tasks/${id}`);
   if (!res.ok) throw new Error('Failed to fetch task');
   return res.json();
 }
 
-export async function createTask(data: Omit<Task, 'id'>): Promise<Task> {
-  const res = await fetch(BASE, {
+export async function createTask(data: CreateTaskRequest): Promise<Task> {
+  const res = await fetch(`${BASE}/Tasks`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -25,7 +25,7 @@ export async function createTask(data: Omit<Task, 'id'>): Promise<Task> {
 }
 
 export async function updateTask(id: string, data: Partial<Task>): Promise<Task> {
-  const res = await fetch(`${BASE}/${id}`, {
+  const res = await fetch(`${BASE}/Tasks/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -35,12 +35,12 @@ export async function updateTask(id: string, data: Partial<Task>): Promise<Task>
 }
 
 export async function deleteTask(id: string): Promise<void> {
-  const res = await fetch(`${BASE}/${id}`, { method: 'DELETE' });
+  const res = await fetch(`${BASE}/Tasks/${id}`, { method: 'DELETE' });
   if (!res.ok) throw new Error('Failed to delete task');
 }
 
 export async function getTasksForCase(caseId: string): Promise<Task[]> {
-  const res = await fetch(`/api/cases/${caseId}/tasks`);
+  const res = await fetch(`${BASE}/cases/${caseId}/tasks`);
   if (!res.ok) throw new Error('Failed to fetch tasks for case');
   return res.json();
 }

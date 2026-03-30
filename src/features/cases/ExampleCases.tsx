@@ -9,7 +9,7 @@ const ExampleCases: Case[] = [
   {
     id: "a3c1f2b0-9d44-4e1a-8c2e-1f0c9e8b1234",
     title: "Klage på kundebehandling",
-    caseType: CaseType.Complaint,
+    type: CaseType.Complaint,
     dateReceived: "2026-03-20T10:15:00Z",
     deadline: "2026-04-01T23:59:59Z",
     complaintDescription: "Kunden opplevde uhøflig behandling i skranken.",
@@ -23,7 +23,7 @@ const ExampleCases: Case[] = [
   {
     id: "b7e2d4c1-3f55-4a9a-9c77-8e2a1b9c4455",
     title: "Forespørsel om dokumentasjon",
-    caseType: CaseType.Request,
+    type: CaseType.Request,
     dateReceived: "2026-03-10T08:00:00Z",
     deadline: "2026-04-15T23:59:59Z",
     complaintDescription: "",
@@ -37,7 +37,7 @@ const ExampleCases: Case[] = [
   {
     id: "f9a8b7c6-1d2e-4f3a-9b4c-7e6d5c4b3a21",
     title: "Statushenvendelse på tidligere sak",
-    caseType: CaseType.Inquiry,
+    type: CaseType.Inquiry,
     dateReceived: "2026-03-18T14:30:00Z",
     deadline: "2026-03-30T23:59:59Z",
     complaintDescription: "Bruker ønsker oppdatering på fremdrift.",

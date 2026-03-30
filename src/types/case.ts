@@ -23,7 +23,7 @@ export interface Case {
   dateReceived: string;           
   deadline: string;
   title: string;
-  caseType: CaseType;               
+  type: CaseType;               
   complaintDescription: string;
   priority: CasePriority;
   status: CaseStatus;
