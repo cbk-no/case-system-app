@@ -1,10 +1,7 @@
 import { useState } from "react";
 import InlineTextEditor from "./InlineTextEditor";
+import type { Task } from "src/types/task";
 
-export interface Task {
-  id: string;
-  description: string;
-}
 
 export interface TasksSectionProps {
   tasks: Task[];
@@ -23,19 +20,6 @@ export default function TasksSection({
 
   return (
     <section>
-      <h3>Oppgaver</h3>
-
-      <ul>
-        {tasks.map((t) => (
-          <li key={t.id}>
-            <InlineTextEditor
-              value={t.description}
-              onSave={(value) => updateTask(t.id, { description: value })}
-            />
-            <button onClick={() => deleteTask(t.id)}>Slett</button>
-          </li>
-        ))}
-      </ul>
 
       <input
         placeholder="Ny oppgave…"

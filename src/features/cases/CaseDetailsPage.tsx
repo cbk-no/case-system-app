@@ -4,9 +4,11 @@ import InlineTextEditor from "./components/InlineTextEditor";
 import InlineSelect from "./components/InlineSelect";
 import InlineDatePicker from "./components/InlineDatePicker";
 import TasksSection from "./components/TasksSection";
+import { TaskCard } from "./components/TaskCard";
 import { useCaseTasks } from "src/hooks/useCaseTasks";
 import { useCaseDetails } from "src/hooks/useCaseDetails";
 import { CasePriority, CaseStatus, CaseType } from "src/types/case";
+import { TaskStatus } from "src/types/task";
 
 export default function CaseDetailsPage() {
   const { id } = useParams();
@@ -31,9 +33,7 @@ export default function CaseDetailsPage() {
             <InlineSelect
               value={caseItem.type}
               options={Object.values(CaseType)}
-              onSave={(value) =>
-                updateCase({ type: value as CaseType })
-              }
+              onSave={(value) => updateCase({ type: value as CaseType })}
             />
           </div>
 
@@ -68,7 +68,9 @@ export default function CaseDetailsPage() {
             <h3>Frist</h3>
             <InlineDatePicker
               value={caseItem.deadline}
-              onSave={(value) => updateCase({ deadline: value })}
+              onSave={(value) => {
+                updateCase({ deadline: value });
+              }}
             />
           </div>
         </div>
@@ -99,26 +101,26 @@ export default function CaseDetailsPage() {
 
         {/* TASKS */}
         <div className="case-section">
-          <h3>Oppgaver</h3>
+          <div className="section-header">
+            <h3>Oppgaver</h3>
+            <button
+              className="add-task-btn"
+              onClick={() => addTask("Ny oppgave")}
+            >
+              + Ny oppgave
+            </button>
+          </div>
 
           <div className="task-list">
             {tasks.map((t) => (
-              <div key={t.id} className="task-card">
-                <InlineTextEditor
-                  value={t.description}
-                  onSave={(value) => updateTask(t.id, { description: value })}
-                />
-                <button onClick={() => deleteTask(t.id)}>Slett</button>
-              </div>
+              <TaskCard
+                key={t.id}
+                task={t}
+                updateTask={updateTask}
+                deleteTask={deleteTask}
+              />
             ))}
           </div>
-
-          <TasksSection
-            tasks={tasks}
-            addTask={addTask}
-            updateTask={updateTask}
-            deleteTask={deleteTask}
-          ></TasksSection>
         </div>
       </div>
     </div>

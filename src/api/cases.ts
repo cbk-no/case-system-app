@@ -29,9 +29,12 @@ export async function updateCase(id: string, data: Partial<Case>): Promise<Case>
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
+    
   });
+  const json = await res.json();
+  
   if (!res.ok) throw new Error('Failed to update case');
-  return res.json();
+  return json;
 }
 
 export async function deleteCase(id: string): Promise<void> {

@@ -97,3 +97,153 @@
   padding-top: 1.5rem;
   border-top: 1px solid #e5e5e5;
 }
+
+/* Make all editable fields clearly editable */
+.editable-textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 0.75rem;
+  border: 2px solid #d0d0d0;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+  background: #fffefc;
+}
+
+.editable-textarea:focus {
+  border-color: #0057d8;
+  outline: none;
+  background: #ffffff;
+}
+
+/* Dropdowns always look like inputs */
+.editable-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #d0d0d0;
+  border-radius: 8px;
+  background: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.editable-select:focus {
+  border-color: #0057d8;
+  outline: none;
+}
+
+/* Section separation */
+.case-section {
+  padding-top: 2rem;
+  border-top: 2px solid #e5e5e5;
+}
+
+/* Title */
+.case-card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.case-card button {
+  background: #0057d8;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.case-card button:hover {
+  background: #003f9e;
+}
+
+/* Task cards */
+.task-card {
+  background: #f8f9fa;
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-task-btn {
+  background: #0057d8;
+  color: white;
+  padding: 0.4rem 0.9rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-task-btn:hover {
+  background: #003f9e;
+}
+
+/* Base card */
+.task-card {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Collapsed */
+.task-card.collapsed .task-title-line {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Expanded */
+.task-card.expanded {
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.task-expanded {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Labels */
+.task-row label {
+  font-weight: 600;
+  font-size: .9rem;
+  color: #333;
+}
+
+/* Delete button */
+.delete-task-btn {
+  background: #d9534f;
+  color: white;
+  padding: .4rem .8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.delete-task-btn:hover {
+  background: #b52b27;
+}

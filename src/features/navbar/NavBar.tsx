@@ -41,6 +41,13 @@ const NavBar: FC = () => {
             </NavLink>
           </li>
         ):null}
+                {isAuthenticated && user ? (
+          <li>
+            <NavLink className="navbar-link" to="/users">
+              Users
+            </NavLink>
+          </li>
+        ):null}
         <li>
           <NavLink className="navbar-link" to="/about">
             About

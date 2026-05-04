@@ -13,5 +13,6 @@ export default [
   route("cases/create", "./routes/cases.create.tsx"),
   route("cases/:id", "./routes/cases.$id.tsx"),
 
+  route("users", "./routes/users.tsx"),
   //route("login", "components/LogInPage.tsx"),
 ] satisfies RouteConfig;

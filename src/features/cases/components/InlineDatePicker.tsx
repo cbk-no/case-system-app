@@ -5,7 +5,10 @@ export interface InlineDatePickerProps {
   onSave: (value: string) => void;
 }
 
-export default function InlineDatePicker({ value, onSave }: InlineDatePickerProps) {
+export default function InlineDatePicker({
+  value,
+  onSave,
+}: InlineDatePickerProps) {
   const [editing, setEditing] = useState(false);
 
   return editing ? (
@@ -13,7 +16,8 @@ export default function InlineDatePicker({ value, onSave }: InlineDatePickerProp
       type="date"
       value={value ? value.substring(0, 10) : ""}
       onChange={(e) => {
-        onSave(e.target.value);
+        const iso = new Date(e.target.value).toISOString();
+        onSave(iso);
         setEditing(false);
       }}
       autoFocus

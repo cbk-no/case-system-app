@@ -33,9 +33,10 @@ export function useUpdateCase(id: string) {
   const qc = useQueryClient();
   return useMutation<Case, Error, Partial<Case>>({
     mutationFn: (data) => updateCase(id, data),
-    onSuccess: () => {
+    onSuccess: (updatedCase) => {
+      qc.setQueryData<Case>(['cases', id], updatedCase);
+
       qc.invalidateQueries({ queryKey: ['cases'] });
-      qc.invalidateQueries({ queryKey: ['cases', id] });
     },
   });
 }

@@ -6,22 +6,15 @@ export interface InlineTextEditorProps {
 }
 
 export default function InlineTextEditor({ value, onSave }: InlineTextEditorProps) {
-  const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(value);
-
-  return editing ? (
+  return (
     <textarea
+      className="editable-textarea"
       value={draft}
-      onChange={(e) => setDraft(e.target.value)}
-      onBlur={() => {
-        onSave(draft);
-        setEditing(false);
+      onChange={(e) => {
+        setDraft(e.target.value);
+        onSave(e.target.value);
       }}
-      autoFocus
     />
-  ) : (
-    <p onClick={() => setEditing(true)}>
-      {value || "Klikk for å skrive…"}
-    </p>
   );
 }

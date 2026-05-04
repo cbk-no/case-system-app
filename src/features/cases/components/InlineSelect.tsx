@@ -7,24 +7,16 @@ export interface InlineSelectProps {
 }
 
 export default function InlineSelect({ value, options, onSave }: InlineSelectProps) {
-  const [editing, setEditing] = useState(false);
 
-  return editing ? (
+  return (
     <select
+      className="editable-select"
       value={value}
-      onChange={(e) => {
-        onSave(e.target.value);
-        setEditing(false);
-      }}
-      autoFocus
+      onChange={(e) => onSave(e.target.value)}
     >
       {options.map((o) => (
-        <option key={o} value={o}>
-          {o}
-        </option>
+        <option key={o} value={o}>{o}</option>
       ))}
     </select>
-  ) : (
-    <span onClick={() => setEditing(true)}>{value}</span>
   );
 }
