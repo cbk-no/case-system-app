@@ -1,0 +1,20 @@
+.priority-badge {
+  padding: 0.4rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}
+
+.priority-low {
+  background: #5cb85c;
+}
+
+.priority-medium {
+  background: #f0ad4e;
+}
+
+.priority-high {
+  background: #d9534f;
+}

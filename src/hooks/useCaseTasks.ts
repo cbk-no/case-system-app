@@ -9,28 +9,26 @@ import { TaskStatus, type Task } from "src/types/task";
 export function useCaseTasks(caseId: string) {
   const tasksQuery = useTasksForCase(caseId);
 
-  const createTask = useCreateTask();
-  const deleteTask = useDeleteTask();
+  const createTask = useCreateTask(caseId);
+  const deleteTask = useDeleteTask(caseId);
 
-  function updateTask(taskId: string, update: Partial<Task>) {
-    const mutation = useUpdateTask(taskId);
-    mutation.mutate(update);
-  }
+  const updateTaskMutation = useUpdateTask(caseId);
 
   return {
     tasks: tasksQuery.data ?? [],
     isLoading: tasksQuery.isLoading,
     error: tasksQuery.error,
 
-    addTask: (description: string) =>
+    addTask: (description: string, assignedUserId: string | null) =>
       createTask.mutate({
         description,
         caseId,
-        status: TaskStatus.Todo, 
-        assignedUserId: null, // or default user
+        status: TaskStatus.Todo,
+        assignedUserId,
       }),
 
-    updateTask,
+    updateTask: (taskId: string, update: Partial<Task>) =>
+      updateTaskMutation.mutate({ taskId, update }),
 
     deleteTask: (taskId: string) => deleteTask.mutate(taskId),
   };

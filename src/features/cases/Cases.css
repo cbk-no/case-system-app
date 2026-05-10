@@ -1,22 +1,28 @@
-.cases-screen {
+.cases-page {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+}
+
+.cases-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  height: 50vh;
 }
-.cases-title {
-  font-size: 2.25rem;
-  font-weight: bold;
-  align-items: top;
-  justify-content: top;
-}
-.cases-create-link {
-  margin-top: 20px;
-  font-size: 1.25rem;
-  font-weight: bold;
-  border: 2px solid #eee;
-  color: #000000;
+
+.cases-create-btn {
+  background: #0078ff;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
   text-decoration: none;
-  background-color: rgb(238, 236, 236);
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.cases-create-btn:hover {
+  background: #005fcc;
 }

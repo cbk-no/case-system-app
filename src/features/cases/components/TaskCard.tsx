@@ -1,10 +1,20 @@
-import { TaskStatus } from "src/types/task";
+import { TaskStatus, type Task } from "src/types/task";
 import InlineSelect from "./InlineSelect";
 import InlineTextEditor from "./InlineTextEditor";
 import { useState } from "react";
-import type { Task } from "src/types/task";
+import "./TaskCard.css";
 
-export function TaskCard({ task, updateTask, deleteTask }: { task: Task; updateTask: (id: string, updates: Partial<Task>) => void; deleteTask: (id: string) => void }) {
+export function TaskCard({
+  task,
+  users,
+  updateTask,
+  deleteTask,
+}: {
+  task: Task;
+  users: { id: string; name: string }[] | undefined;
+  updateTask: (id: string, updates: Partial<Task>) => void;
+  deleteTask: (id: string) => void;
+}) {
   const [expanded, setExpanded] = useState(false);
 
   const firstLine = task.description.split("\n")[0];
@@ -18,6 +28,20 @@ export function TaskCard({ task, updateTask, deleteTask }: { task: Task; updateT
       {!expanded && (
         <div className="task-collapsed">
           <div className="task-title-line">{firstLine}</div>
+
+          <div className="task-meta">
+            <span
+              className={`task-status-badge status-${task.status.toLowerCase()}`}
+            >
+              {task.status}
+            </span>
+
+            {task.assignedUserId && (
+              <span className="task-user">
+                {users?.find((u) => u.id === task.assignedUserId)?.name}
+              </span>
+            )}
+          </div>
         </div>
       )}
 
@@ -30,11 +54,19 @@ export function TaskCard({ task, updateTask, deleteTask }: { task: Task; updateT
           />
 
           <div className="task-row">
-            <label>Ansvarlig</label>
+            <label>Responsible user </label>
             <InlineSelect
-              value={task.assignedUserId}
-              options={["user1", "user2", "user3"]} // replace with real users
-              onSave={(value) => updateTask(task.id, { assignedUserId: value })}
+              value={task.assignedUserId || ""}
+              options={[
+                { label: "Ikke tildelt", value: "" },
+                ...(users?.map((u) => ({
+                  label: u.name,
+                  value: u.id,
+                })) ?? []),
+              ]}
+              onSave={(value) =>
+                updateTask(task.id, { assignedUserId: value })
+              }
             />
           </div>
 
@@ -42,8 +74,13 @@ export function TaskCard({ task, updateTask, deleteTask }: { task: Task; updateT
             <label>Status</label>
             <InlineSelect
               value={task.status}
-              options={Object.values(TaskStatus)}
-              onSave={(value) => updateTask(task.id, { status: value as TaskStatus })}
+              options={Object.values(TaskStatus).map((v) => ({
+                label: v,
+                value: v,
+              }))}
+              onSave={(value) =>
+                updateTask(task.id, { status: value as TaskStatus })
+              }
             />
           </div>
 

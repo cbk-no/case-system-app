@@ -1,13 +1,12 @@
-import { useState } from "react";
-
-export interface InlineSelectProps {
+export default function InlineSelect({
+  value,
+  options,
+  onSave,
+}: {
   value: string;
-  options: string[];
+  options: { label: string; value: string }[];
   onSave: (value: string) => void;
-}
-
-export default function InlineSelect({ value, options, onSave }: InlineSelectProps) {
-
+}) {
   return (
     <select
       className="editable-select"
@@ -15,7 +14,9 @@ export default function InlineSelect({ value, options, onSave }: InlineSelectPro
       onChange={(e) => onSave(e.target.value)}
     >
       {options.map((o) => (
-        <option key={o} value={o}>{o}</option>
+        <option key={o.value} value={o.value}>
+          {o.label}
+        </option>
       ))}
     </select>
   );

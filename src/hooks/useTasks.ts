@@ -29,29 +29,37 @@ export function useTasksForCase(caseId: string) {
   });
 }
 
-export function useCreateTask() {
+export function useCreateTask(caseId: string) {
   const qc = useQueryClient();
+
   return useMutation({
     mutationFn: createTask,
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['tasks'] }),
-  });
-}
-
-export function useUpdateTask(id: string) {
-  const qc = useQueryClient();
-  return useMutation<Task, Error, Partial<Task>>({
-    mutationFn: (data) => updateTask(id, data),
     onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ['tasks'] });
-      qc.invalidateQueries({ queryKey: ['tasks', id] });
+      qc.invalidateQueries({ queryKey: ['cases', caseId, 'tasks'] });
     },
   });
 }
 
-export function useDeleteTask() {
+export function useUpdateTask(caseId: string) {
   const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ taskId, update }: { taskId: string; update: Partial<Task> }) =>
+      updateTask(taskId, update),
+
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['cases', caseId, 'tasks'] });
+    },
+  });
+}
+
+export function useDeleteTask(caseId: string) {
+  const qc = useQueryClient();
+
   return useMutation({
     mutationFn: deleteTask,
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['tasks'] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['cases', caseId, 'tasks'] });
+    },
   });
 }

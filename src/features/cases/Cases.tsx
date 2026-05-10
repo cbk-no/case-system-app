@@ -1,21 +1,19 @@
 import { Link } from "react-router";
-import "./Cases.css";
 import CasesList from "./CasesList";
-import ExampleCases from "./ExampleCases";
+import "./Cases.css";
 
-const Cases: React.FC = () => {
+export default function Cases() {
   return (
-    <div className="cases-screen">
-      <h1 className="cases-title">Cases</h1>
-      <p>Total Cases: {ExampleCases.length}</p>
+    <div className="cases-page">
+      <div className="cases-header">
+        <h1>Cases</h1>
+
+        <Link className="cases-create-btn" to="/cases/create">
+          + Create New Case
+        </Link>
+      </div>
 
       <CasesList />
-
-      <Link className="cases-create-link" to={`/cases/create`}>
-        Create Case
-      </Link>
     </div>
   );
-};
-
-export default Cases;
+}
