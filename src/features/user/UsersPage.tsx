@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useUsers, useCreateUser } from "src/hooks/useUsers";
 import { Role } from "src/types/user";
+import "./UsersPage.css";
+import UserRoleBadge from "./UserRoleBadge";
+import UserCard from "./UserCard";
 
 export default function UsersPage() {
   const { data: users, isLoading } = useUsers();
@@ -12,46 +15,57 @@ export default function UsersPage() {
     role: Role.User,
   });
 
-  if (isLoading) return <div>Laster brukere…</div>;
+  function handleSubmit() {
+    createUser.mutate(form);
+    setForm({ name: "", email: "", role: Role.User });
+  }
+
+  if (isLoading) return <div className="users-loading">Loading users…</div>;
 
   return (
     <div className="users-page">
-      <h1>Brukere</h1>
+      <h1 className="users-title">User Administration</h1>
 
-      <div className="user-form">
-        <input
-          placeholder="Navn"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-        />
+      {/* CREATE USER FORM */}
+      <div className="user-form-card">
+        <h2>Create New User</h2>
 
-        <input
-          placeholder="E‑post"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-        />
+        <div className="user-form-grid">
+          <input
+            placeholder="Name"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+          />
 
-        <select
-          value={form.role}
-          onChange={(e) => setForm({ ...form, role: e.target.value as Role })}
-        >
-          {Object.values(Role).map((r) => (
-            <option key={r} value={r}>
-              {r}
-            </option>
-          ))}
-        </select>
+          <input
+            placeholder="Email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
 
-        <button onClick={() => createUser.mutate(form)}>Opprett bruker</button>
+          <select
+            value={form.role}
+            onChange={(e) => setForm({ ...form, role: e.target.value as Role })}
+          >
+            {Object.values(Role).map((r) => (
+              <option key={r} value={r}>
+                {r}
+              </option>
+            ))}
+          </select>
+
+          <button className="create-user-btn" onClick={handleSubmit}>
+            Create User
+          </button>
+        </div>
       </div>
 
-      <ul className="user-list">
+      {/* USER LIST */}
+      <div className="users-list">
         {users?.map((u) => (
-          <li key={u.id}>
-            {u.name} — {u.email} ({u.role})
-          </li>
+          <UserCard key={u.id} user={u} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

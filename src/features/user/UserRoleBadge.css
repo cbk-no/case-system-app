@@ -1,0 +1,15 @@
+.role-badge {
+  padding: 0.4rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.role-admin {
+  background: #d9534f;
+}
+
+.role-user {
+  background: #5bc0de;
+}

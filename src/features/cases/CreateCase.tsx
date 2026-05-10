@@ -1,81 +1,130 @@
-import { useState, type FC, type ChangeEvent, type FormEvent } from 'react';
-import './CreateCase.css';
+import { useState } from "react";
+import { useUsers } from "src/hooks/useUsers";
+import { useCreateCase } from "src/hooks/useCreateCase";
+import { CasePriority, CaseStatus, CaseType } from "src/types/case";
+import UserSelect from "./components/UserSelect";
+import "./CreateCase.css";
+import { useNavigate } from "react-router";
 
-interface CaseFormData {
-  title: string;
-  description: string;
-  priority: string;
+export default function CreateCasePage() {
+  const { data: users } = useUsers();
+  const navigate = useNavigate();
+  const createCase = useCreateCase(navigate);
+
+  const [form, setForm] = useState({
+    title: "",
+    type: CaseType.Complaint,
+    priority: CasePriority.Medium,
+    status: CaseStatus.Open,
+    description: "",
+    emailComplainer: "",
+    userInfoComplainer: "",
+    dateReceived: new Date().toISOString(),
+    complaintDescription: "",
+    deadline: "",
+    caseOwnerId: "",
+  });
+
+function handleSubmit() {
+  const payload = {
+    dateReceived: form.dateReceived,
+    deadline: new Date(form.deadline + "T00:00:00").toISOString(),
+    title: form.title,
+    type: form.type,
+    complaintDescription: form.complaintDescription,
+    priority: form.priority,
+    status: form.status,
+    description: form.description,
+    emailComplainer: form.emailComplainer,
+    userInfoComplainer: form.userInfoComplainer,
+    caseOwnerId: form.caseOwnerId,
+  };
+
+  console.log("Submitting payload:", payload);
+  createCase.mutate(payload);
 }
 
-const CreateCases: FC = () => {
-  const [form, setForm] = useState<CaseFormData>({
-    title: '',
-    description: '',
-    priority: 'Low',
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // Here you would send form data to your backend or API
-    setSubmitted(true);
-  };
 
   return (
-    <div className="create-case-container">
-      <h2 className="create-case-title">Create New Case</h2>
-      {submitted ? (
-        <div className="create-case-success">Case submitted successfully!</div>
-      ) : (
-        <form className="create-case-form" onSubmit={handleSubmit}>
-          <div className="create-case-field">
-            <label htmlFor="title">Title</label><br />
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={form.title}
-              onChange={handleChange}
-              required
-              className="create-case-input"
-            />
-          </div>
-          <div className="create-case-field">
-            <label htmlFor="description">Description</label><br />
-            <textarea
-              id="description"
-              name="description"
-              value={form.description}
-              onChange={handleChange}
-              required
-              rows={4}
-              className="create-case-textarea"
-            />
-          </div>
-          <div className="create-case-field">
-            <label htmlFor="priority">Priority</label><br />
-            <select
-              id="priority"
-              name="priority"
-              value={form.priority}
-              onChange={handleChange}
-              className="create-case-select"
-            >
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-            </select>
-          </div>
-          <button type="submit" className="create-case-button">Create Case</button>
-        </form>
-      )}
+    <div className="create-case-page">
+      <h1 className="create-case-title">Opprett ny sak</h1>
+
+      <div className="form-card">
+        <h2>Case Information</h2>
+
+        <div className="form-grid">
+          <input
+            placeholder="Tittel"
+            value={form.title}
+            onChange={(e) => setForm({ ...form, title: e.target.value })}
+          />
+
+          <select
+            value={form.type}
+            onChange={(e) => setForm({ ...form, type: e.target.value as CaseType })}
+          >
+            {Object.values(CaseType).map((t) => (
+              <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+
+          <select
+            value={form.priority}
+            onChange={(e) => setForm({ ...form, priority: e.target.value as CasePriority })}
+          >
+            {Object.values(CasePriority).map((p) => (
+              <option key={p} value={p}>{p}</option>
+            ))}
+          </select>
+
+          <input
+            type="date"
+            value={form.deadline}
+            onChange={(e) => setForm({ ...form, deadline: e.target.value })}
+          />
+        </div>
+      </div>
+
+      <div className="form-card">
+        <h2>Caseworker</h2>
+        <UserSelect
+          users={users ?? []}
+          value={form.caseOwnerId}
+          onChange={(id: string) => setForm({ ...form, caseOwnerId: id })}
+        />
+      </div>
+
+      <div className="form-card">
+        <h2>Complaint Information</h2>
+
+        <textarea
+          placeholder="Description"
+          value={form.description}
+          onChange={(e) => setForm({ ...form, description: e.target.value })}
+        />
+
+        <input
+          placeholder="email complainer"
+          value={form.emailComplainer}
+          onChange={(e) => setForm({ ...form, emailComplainer: e.target.value })}
+        />
+
+        <input
+          placeholder="User info complainer"
+          value={form.userInfoComplainer}
+          onChange={(e) => setForm({ ...form, userInfoComplainer: e.target.value })}
+        />
+
+        <textarea
+          placeholder="Complaint Description"
+          value={form.complaintDescription}
+          onChange={(e) => setForm({ ...form, complaintDescription: e.target.value })}
+        />
+      </div>
+
+      <button className="create-case-btn" onClick={handleSubmit}>
+        Create case
+      </button>
     </div>
   );
-};
-
-export default CreateCases;
+}

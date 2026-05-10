@@ -30,7 +30,7 @@ export interface Case {
   description: string;
   emailComplainer: string;
   userInfoComplainer: string;
-  caseOwnerId: string;            // Guid
+  caseOwnerId?: string;            // Guid
 }
 
 export interface CasesProps {

@@ -1,0 +1,19 @@
+.user-card {
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-card-main h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.user-card-main p {
+  margin: 0.25rem 0 0;
+  color: #555;
+}
